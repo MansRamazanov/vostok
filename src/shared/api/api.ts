@@ -43,10 +43,13 @@ const mockWorkshops: Workshop[] = [
 ]
 
 const mockEmployees: Employee[] = [
-  { id: '1', name: 'Ленин В.И.', workshopId: '1' },
-  { id: '2', name: 'Сталин И.В.', workshopId: '1' },
-  { id: '3', name: 'Хрущев Н.С.', workshopId: '2' },
-  { id: '4', name: 'Брежнев Л.И.', workshopId: '3' },
+  { id: '1', name: 'Дукалис Ю.В.', workshopId: '1' },
+  { id: '2', name: 'Литвинков Н.Н.', workshopId: '1' },
+  { id: '3', name: 'Гамаз И.В.', workshopId: '2' },
+  { id: '4', name: 'Безумный П.П.', workshopId: '3' },
+  { id: '5', name: 'Монгол О.В.', workshopId: '4' },
+  { id: '6', name: 'Иришка Ч.П', workshopId: '5' },
+  { id: '7', name: 'Наталья М.П', workshopId: '6' },
 ]
 
 const mockBrigades: Brigade[] = [
@@ -68,12 +71,12 @@ export const fetchCities = async (): Promise<City[]> => {
 
 export const fetchWorkshops = async (cityId: string): Promise<Workshop[]> => {
   await new Promise((resolve) => setTimeout(resolve, 500))
-  return mockWorkshops
+  return mockWorkshops.filter((workshop) => workshop.cityId === cityId)
 }
 
 export const fetchEmployees = async (workshopId: string): Promise<Employee[]> => {
   await new Promise((resolve) => setTimeout(resolve, 500))
-  return mockEmployees
+  return mockEmployees.filter((employee) => employee.workshopId === workshopId)
 }
 
 export const fetchBrigades = async (employeeId: string): Promise<Brigade[]> => {

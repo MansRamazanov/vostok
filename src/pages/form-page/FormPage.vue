@@ -193,7 +193,6 @@ const onShiftChange = async () => {
 }
 
 const onSubmit = () => {
-  // Находим выбранные объекты
   const selectedCity = cities.value.find((city) => city.id === formData.value.city)
   const selectedWorkshop = workshops.value.find(
     (workshop) => workshop.id === formData.value.workshop,
@@ -204,7 +203,6 @@ const onSubmit = () => {
   const selectedBrigade = brigades.value.find((brigade) => brigade.id === formData.value.brigade)
   const selectedShift = shifts.value.find((shift) => shift.id === formData.value.shift)
 
-  // Сохраняем данные в store
   formStore.saveFormData({
     ...formData.value,
     cityName: selectedCity?.name || '',
@@ -214,7 +212,6 @@ const onSubmit = () => {
     shiftName: selectedShift?.name || '',
   })
 
-  // Переходим на страницу результатов
   router.push('/result')
 }
 
